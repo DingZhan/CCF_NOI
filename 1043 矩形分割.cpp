@@ -111,7 +111,7 @@ int main()
         if(area>totalArea/2.0)
         {
             //设置区间往左搜索
-            high = x;
+            high = x-1;
             //设置上次搜索有效坐标和是否穿过多边形标记
             lastValidX = x;
             bLastInsideRect = bInsideRect;
@@ -120,7 +120,7 @@ int main()
         else if(area<totalArea/2.0)
         {
             //设置区间往右搜索
-            low = x;
+            low = x+1;
         }
         else //左边面积等于右边面积，退出搜索
         {
@@ -128,9 +128,6 @@ int main()
             bLastInsideRect = bInsideRect;
             break;
         }
-        //如果本次x和下次搜索的x相同，则退出二分搜索
-        if((high+low)/2==x)
-            break;
         //设置中心，再次搜索
         x = (high+low)/2;
     }
